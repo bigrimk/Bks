@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hooray!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .container {
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+        .animated-cartoon {
+            margin: 20px 0;
+            animation: popIn 0.5s ease-in-out;
+        }
+        @keyframes popIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hooray! 🎉</h1>
+        <div class="animated-cartoon">
+            <img src="photofunky.gif" alt="Hooray Image" style="max-width: 100%; height: auto;"> <!-- Make sure this file is in the same directory as your HTML files -->
+        </div>
+    </div>
+</body>
+</html>
