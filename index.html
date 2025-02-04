@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,6 @@
             text-align: center;
             background-color: #f0f0f0;
             color: #333;
-            animation: fadeIn 2s ease-in-out;
         }
         .container {
             margin: 50px auto;
@@ -19,11 +19,6 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             max-width: 600px;
-            animation: slideIn 2s ease-in-out;
-        }
-        h1 {
-            color: #ff6f61;
-            animation: bounceIn 1s ease-in-out;
         }
         .button {
             display: inline-block;
@@ -36,52 +31,42 @@
             border-radius: 5px;
             text-decoration: none;
             cursor: pointer;
-            animation: zoomIn 1s ease-in-out;
         }
         .button:hover {
             background-color: #ff4f41;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        @keyframes slideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        @keyframes bounceIn {
-            0%, 20%, 40%, 60%, 80%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-        @keyframes zoomIn {
-            from {
-                transform: scale(0);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
         }
         .hidden {
             display: none;
         }
     </style>
+    <!-- Google Analytics Tracking Code -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID"></script>
     <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'YOUR_TRACKING_ID');
+    </script>
+    <script>
+        function showDatePicker() {
+            document.getElementById('datePickerContainer').classList.remove('hidden');
+            document.getElementById('yesButton').classList.add('hidden');
+        }
+
+        function submitDate() {
+            const date = document.getElementById('datePicker').value;
+            if (date) {
+                gtag('event', 'date_selected', {
+                    'event_category': 'Interaction',
+                    'event_label': date
+                });
+                window.location.href = "hooray.html";
+            } else {
+                alert("Please select a date.");
+            }
+        }
+
         function moveButton() {
             const noButton = document.getElementById('noButton');
             const container = document.querySelector('.container');
@@ -96,11 +81,17 @@
 </head>
 <body>
     <div class="container">
-        <h1>Hey Kasano Dondime K Marak!</h1> <!-- Replace 'Emily' with her actual name -->
+        <h1>Hey Kasano Dondime K Marak!</h1>
         <p>I have something special to ask you...</p>
-        <p>Will you go out on a date with me?</p>
-        <a href="hooray.html" class="button">Yes</a> <!-- Link to the hooray page -->
+        <p>Will you go outon a Date with me? and basako?</p>
+        <button id="yesButton" class="button" onclick="showDatePicker()">Yes</button>
         <button id="noButton" class="button" onclick="moveButton()">No</button>
+
+        <div id="datePickerContainer" class="hidden">
+            <p>Please choose a date:</p>
+            <input type="date" id="datePicker">
+            <button class="button" onclick="submitDate()">Submit</button>
+        </div>
     </div>
 </body>
 </html>
